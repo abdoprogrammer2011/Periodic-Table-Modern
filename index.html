@@ -1146,6 +1146,108 @@
     transition: none !important;
   }
 
+  /* Designer Section */
+  .designer-wrapper {
+    padding: 40px 18px;
+    width: 100%;
+    max-width: 500px;
+    height: calc(100vh - 60px); /* leave space for bottom nav */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .designer-card {
+    position: relative;
+    background: var(--bg-card);
+    padding: 40px 25px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+  }
+  .designer-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  }
+  .avatar-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+  }
+  .designer-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-blue);
+    display: block;
+    z-index: 2;
+    position: relative;
+  }
+  .avatar-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 170px;
+    height: 170px;
+    border: 2px dashed var(--accent-purple);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    animation: pulse-ring 2s infinite;
+    z-index: 1;
+  }
+  @keyframes pulse-ring {
+    0%,100% { transform: translate(-50%, -50%) scale(1); opacity:0.7; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity:0.3; }
+  }
+  .designer-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 8px 0;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .designer-title {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .designer-bio {
+    color: var(--text-secondary);
+    margin: 16px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .btn-portfolio {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59,130,246,0.3);
+  }
+  .btn-portfolio:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+  }
+  .view-designer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  }
+
 </style>
 <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script>
 </head>
@@ -1511,6 +1613,21 @@
         <div id="simulationsContainer" class="sim-grid"></div>
       </div>
     </div>
+
+    <!-- View: المصمم (Designer) -->
+    <div id="view-designer" class="view-container">
+      <div class="designer-wrapper">
+        <div class="designer-card">
+          <div class="avatar-wrapper">
+            <img src="avatar.png" alt="Abdelrahman Mohamed Sayed" class="designer-image">
+          </div>
+          <h3 class="designer-title">المصمم</h3>
+          <p class="designer-name">Abdelrahman Mohamed Sayed</p>
+          <p class="designer-bio">مرحباً! أنا مصمم ومطور أعمل على مشاريع تعليمية وتفاعلية تهدف إلى تبسيط العلوم. يستطيع الزوار الاطلاع على البورتفوليو الكامل من خلال الزر أدناه.</p>
+          <a href="https://abdoprogrammer2011.github.io/abdelrahman-portfolio/" class="btn-portfolio" target="_blank">See Full Portfolio</a>
+        </div>
+      </div>
+    </div>
 </main>
 
 <nav class="bottom-nav">
@@ -1549,6 +1666,10 @@
   <div class="nav-item" data-title="مزيد من التجارب" aria-label="مزيد من التجارب" onclick="switchView('simulations', this)">
     <span class="nav-icon">📂</span>
     <span class="nav-label">مزيد من التجارب</span>
+  </div>
+  <div class="nav-item" data-title="المصمم" aria-label="المصمم" onclick="switchView('designer', this)">
+    <span class="nav-icon">👨‍💻</span>
+    <span class="nav-label">المصمم</span>
   </div>
 </nav>
 
@@ -3988,5 +4109,6 @@ function showFolderAlert(baseDir) {
   </script>
 
 <!-- legacy bottom nav is now floating (kept HTML elsewhere in file) -->
+
 </body>
 </html>
